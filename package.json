@@ -1,0 +1,73 @@
+{
+  "name": "ProfessionalToolsBrowser",
+  "version": "0.0.2",
+  "description": "Professional Tools Browser that contain Professional Tools",
+  "author": "Professional Tools Developer",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
+    "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+    "build": "webpack --config webpack.build.config.js",
+    "package-win": "yarn build && node electron-packager.js && electron-installer-windows --src build/releases/ProfessionalToolsBrowser-win32-x64/ --icon logo.ico --dest build/releases/ && echo Completed ",
+    "package-ios": "npm run build && node electron-packager.js && electron-installer-dmg ./build/releases/ProfessionalToolsBrowser-darwin-x64/ProfessionalToolsBrowser.app ProfessionalToolsBrowser --overwrite && echo Completed "
+  },
+  "build": {
+    "appId": "com.Professional.browser",
+    "productName": "Professional Browser",
+    "copyright": "Copyright © 2019 Professional Tools",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "main.js",
+      "src/utils/*",
+      "index.js"
+    ],
+    "directories": {}
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "antd": "^4.8.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "css-loader": "^3.2.0",
+    "dva": "^2.4.1",
+    "electron": "^7.1.2",
+    "electron-builder": "^22.9.1",
+    "electron-packager": "^14.1.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^5.0.2",
+    "history": "^5.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.2.0",
+    "style-loader": "^1.0.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "chrome-network-errors": "^1.0.0",
+    "chromium-net-errors": "^12.3.0",
+    "crypto-js": "^4.0.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "interactjs": "^1.10.0",
+    "react-browser-tabs": "1.0.13",
+    "react-draggable": "^4.4.3"
+  }
+}

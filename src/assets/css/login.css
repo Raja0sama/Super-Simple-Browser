@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+body {
+  background-color: transparent;
+}
+.LL {
+  background-color: rgba(58, 58, 61, 0.97);
+  /* -webkit-app-region: drag !important; */
+  backdrop-filter: blue(10px);
+  border-radius: 12px;
+  /* opacity: 0.97; */
+  color: white;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.h2L {
+  margin: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+.inputDiv {
+  background-color: rgb(22, 26, 26);
+  border-color: rgb(22, 26, 26);
+  border-radius: 4px;
+  border-radius: 4px;
+  display: flex;
+  opacity: 0.6;
+  width: calc(100vw - 80px);
+  padding: 10px;
+  margin: 15px 0px;
+  -webkit-app-region: no-drag !important;
+}
+.btnL {
+  -webkit-app-region: no-drag !important;
+  width: 210px;
+  height: 53px;
+  background: #ff9900 0% 0% no-repeat padding-box;
+  box-shadow: -6px 6px 40px #ff99004d;
+  border-radius: 6px;
+  opacity: 1;
+  color: white;
+  margin-top: 30px;
+}
+.btnL:hover {
+  background: #614822 0% 0% no-repeat padding-box;
+}

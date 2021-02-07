@@ -49,11 +49,11 @@ const injectMessageBot = () => {
   d2.setAttribute("theme_color", "#FF9900");
   d2.setAttribute(
     "logged_in_greeting",
-    "Welcome to Professional Tools. How can I help you today?"
+    "Welcome to Super Simple. How can I help you today?"
   );
   d2.setAttribute(
     "logged_out_greeting",
-    "Welcome to Professional Tools. How can I help you today?"
+    "Welcome to Super Simple. How can I help you today?"
   );
 
   document.body.append(d1);

@@ -1,3 +1,3 @@
-# Super Simple Browser
+# Super SimpleBrowser
 
 work in progress.

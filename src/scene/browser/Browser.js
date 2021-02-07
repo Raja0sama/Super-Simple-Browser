@@ -3,7 +3,6 @@ import "../../assets/css/App.css";
 import { connect } from "dva";
 import { add, back, create, forward, go, refresh, stop } from "../../modal/app";
 import webView from "../../utils/webView";
-import Logo from "../../assets/icons/logo.svg";
 import Back from "../../assets/icons/back.svg";
 import Home from "../../assets/icons/home.svg";
 import EarthSpinner from "../../assets/icons/loader.svg";
@@ -15,7 +14,6 @@ import { remote } from "electron";
 import util, { updateTitle } from "../../utils/utils";
 import * as chromiumNetErrors from "chromium-net-errors";
 import electronIsDev from "electron-is-dev";
-import packageJSON from "../../../package.json";
 const Browser = ({
   back,
   forward,

@@ -13,6 +13,11 @@ const namespace = "app";
 const startLoading = (loadingType) => ({ type: "startLoading", loadingType });
 const stopLoading = (loadingType) => ({ type: "stopLoading", loadingType });
 
+export const back = (id) => ({ type: `${namespace}/back`, id });
+export const forward = (id) => ({ type: `${namespace}/forward`, id });
+export const refresh = (id) => ({ type: `${namespace}/refresh`, id });
+export const stop = (id) => ({ type: `${namespace}/stop`, id });
+export const go = (url, id) => ({ type: `${namespace}/go`, url, id });
 export const setActiveKey = (key) => ({
   type: `${namespace}/setState`,
   activeKey: key,
@@ -32,11 +37,6 @@ export const remove = (targetKey) => {
     targetKey,
   };
 };
-export const back = (id) => ({ type: `${namespace}/back`, id });
-export const forward = (id) => ({ type: `${namespace}/forward`, id });
-export const refresh = (id) => ({ type: `${namespace}/refresh`, id });
-export const stop = (id) => ({ type: `${namespace}/stop`, id });
-export const go = (url, id) => ({ type: `${namespace}/go`, url, id });
 export const create = (id, props = {}) => {
   return {
     type: `${namespace}/create`,

@@ -1,8 +1,8 @@
 {
-  "name": "ProfessionalToolsBrowser",
+  "name": "SuperSimpleBrowser",
   "version": "0.0.2",
-  "description": "Professional Tools Browser that contain Professional Tools",
-  "author": "Professional Tools Developer",
+  "description": "Super Simple Browser that contain Super Simple",
+  "author": "Super Simple Developer",
   "homepage": "",
   "repository": {
     "type": "git",
@@ -14,13 +14,13 @@
     "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
     "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
     "build": "webpack --config webpack.build.config.js",
-    "package-win": "yarn build && node electron-packager.js && electron-installer-windows --src build/releases/ProfessionalToolsBrowser-win32-x64/ --icon logo.ico --dest build/releases/ && echo Completed ",
-    "package-ios": "npm run build && node electron-packager.js && electron-installer-dmg ./build/releases/ProfessionalToolsBrowser-darwin-x64/ProfessionalToolsBrowser.app ProfessionalToolsBrowser --overwrite && echo Completed "
+    "package-win": "yarn build && node electron-packager.js && electron-installer-windows --src build/releases/SuperSimpleBrowser-win32-x64/ --icon logo.ico --dest build/releases/ && echo Completed ",
+    "package-ios": "npm run build && node electron-packager.js && electron-installer-dmg ./build/releases/SuperSimpleBrowser-darwin-x64/SuperSimpleBrowser.app SuperSimpleBrowser --overwrite && echo Completed "
   },
   "build": {
     "appId": "com.Professional.browser",
     "productName": "Professional Browser",
-    "copyright": "Copyright © 2019 Professional Tools",
+    "copyright": "Copyright © 2019 Super Simple",
     "files": [
       "build/**/*",
       "node_modules/**/*",

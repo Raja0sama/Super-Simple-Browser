@@ -3,11 +3,11 @@ var options = {
   arch: "x64",
   platform: process.platform,
   dir: "./",
-  "app-copyright": "Professional Tools",
+  "app-copyright": "Super Simple",
   "app-version": "0.0.1",
   asar: true,
   icon: "./logo.ico",
-  name: "ProfessionalToolsBrowser",
+  name: "SuperSimpleBrowser",
   ignore: [
     "releases",
     ".git",
@@ -31,12 +31,12 @@ var options = {
   prune: true,
   version: "0.0.1",
   "version-string": {
-    CompanyName: "Professional Tools",
+    CompanyName: "Super Simple",
     FileDescription:
       "Tools for Professional clients" /*This is what display windows on task manager, shortcut and process*/,
-    OriginalFilename: "ProfessionalToolsBrowser",
-    ProductName: "Professional Tools Browser",
-    InternalName: "ProfessionalToolsBrowser",
+    OriginalFilename: "SuperSimpleBrowser",
+    ProductName: "Super Simple Browser",
+    InternalName: "SuperSimpleBrowser",
   },
 };
 packager(options, function done_callback(err, appPaths) {

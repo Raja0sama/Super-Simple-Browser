@@ -21,7 +21,7 @@ const App = ({ setActiveKey, add, remove, activeKey, ...props }) => {
   const tabs = [props.tabs, props.setTabs];
   const activeTab = [props.activeTab, props.setActiveTab];
   console.log({ activeTab });
-  const [isDark, setisDark] = useState(false);
+  const [isDark, setisDark] = useState(true);
   return (
     <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}>
       <div

@@ -23,12 +23,14 @@ button,
 input {
   outline: none;
 }
-
+.cross {
+  fill: white;
+}
 #controls {
   -webkit-app-region: no-drag !important;
   padding: 5px;
   border-bottom: solid 1px transparent;
-  background: #3a3a3d;
+  background: rgb(50, 54, 57);
 }
 
 #controls button,

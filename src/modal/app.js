@@ -30,6 +30,10 @@ export const setActiveTab = (key) => ({
   type: `${namespace}/setState`,
   activeTab: key,
 });
+export const updateTab = (detail) => ({
+  type: `${namespace}/updateTab`,
+  detail,
+});
 export const add = (url) => ({ type: `${namespace}/add`, url });
 export const remove = (targetKey) => {
   return {
@@ -61,6 +65,21 @@ export default {
   },
 
   effects: {
+    *updateTab({ detail }, { select, put }) {
+      console.log("Being called");
+      const { title, url, id } = detail;
+      const { tabs } = yield select(({ app }) => ({ tabs: app.tabs }));
+      console.log({ detail });
+      const newTabs = tabs.map((e) => {
+        if (id && e.id == id) {
+          e.title = title || e.title;
+          e.url = url || e.url;
+        }
+        return e;
+      });
+
+      yield put({ type: "setState", tabs: [...newTabs] });
+    },
     *add({ url }, { select, put }) {
       const { tabs } = yield select(({ app }) => ({ tabs: app.tabs }));
       const props = url && { url };
@@ -150,9 +169,7 @@ export default {
                 title: "Google",
                 url: "https://google.com/", // auto fetch url
                 id: "tab1",
-                content: (props) => (
-                  <Browser url="https://google.com/" id={"firstTab"} />
-                ),
+                content: (props) => <Browser {...props} id={"tab1"} />,
               },
             ],
           ],

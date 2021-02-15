@@ -13,14 +13,14 @@ import {
   setActiveKey,
   setActiveTab,
   setTabs,
+  updateTab,
 } from "../../modal/app";
 import { BrowserTabs, Dark, Light } from "react-browser-tabs";
 
-const { TabPane } = Tabs;
 const App = ({ setActiveKey, add, remove, activeKey, ...props }) => {
   const tabs = [props.tabs, props.setTabs];
   const activeTab = [props.activeTab, props.setActiveTab];
-  console.log({ activeTab });
+
   const [isDark, setisDark] = useState(true);
   return (
     <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}>
@@ -33,7 +33,7 @@ const App = ({ setActiveKey, add, remove, activeKey, ...props }) => {
         <BrowserTabs
           onAddTabPress={add} // CallBack for a Tab Add
           theme={isDark ? Dark : Light} // Theming
-          injectProps={{ isDark, setisDark }} // custom props that you needed it to be injected.
+          injectProps={{ isDark, setisDark, updateTab: props.updateTab }} // custom props that you needed it to be injected.
           activeTab={activeTab} // keep a track of active index via state.
           tabs={tabs} // tabs
           style={{
@@ -50,5 +50,5 @@ export default connect(
     activeTab: app.activeTab,
     tabs: app.tabs,
   }),
-  { add, remove, setActiveKey, setActiveTab, setTabs }
+  { add, remove, updateTab, setActiveKey, setActiveTab, setTabs }
 )(App);

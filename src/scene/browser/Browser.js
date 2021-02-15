@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "../../assets/css/App.css";
 import { connect } from "dva";
 import { add, back, create, forward, go, refresh, stop } from "../../modal/app";
@@ -12,86 +12,82 @@ import Secure from "../../assets/icons/secure.svg";
 import { Input } from "antd";
 import { remote } from "electron";
 import util, { updateTitle } from "../../utils/utils";
+
 import * as chromiumNetErrors from "chromium-net-errors";
 import electronIsDev from "electron-is-dev";
-const Browser = ({
-  back,
-  forward,
-  go,
-  refresh,
-  stop,
-  id,
-  create,
-  add,
-  services,
-  ...props
-}) => {
+const Browser = (props) => {
+  const { back, forward, go, refresh, stop, id, create, add, services } = props;
   const [url, seturl] = useState("");
+
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState(false);
-  const onTitlechange = (event) =>
-    id != "newTab0" &&
-    updateTitle(
-      event.title,
+  const onTitlechange = (event) => {
+    console.log("Hi");
+    props.updateTab({
+      title: event.title,
       id,
-      `https://www.google.com/s2/favicons?domain=${webView
-        .webview(id)
-        .getURL()}`
-    );
-  const onURLChange = ({ url }) => {
-    seturl(url);
-    replacingURL();
-  };
-  const replacingURL = () => {
-    const currUrl = webView.webview(id).getURL();
-    const { pathname: cPathName, hostname: cHostName } = new URL(currUrl);
-
-    services.forEach((e) => {
-      const blockedURLS = e.afp_custom_feilds.fetching_blocked_urls
-        ? e.afp_custom_feilds.fetching_blocked_urls
-        : [];
-      blockedURLS.forEach(({ urls: url }) => {
-        const { pathname: bPathName, hostname: bHostName } = new URL(url);
-
-        if (bHostName == cHostName && cPathName.includes(bPathName)) {
-          webView.webview(id).send("replace", "about:blank");
-        }
-      });
-      const tobeblockElements = e.afp_custom_feilds.fetching_blocked_elements;
-      Array.isArray(tobeblockElements) &&
-        tobeblockElements.forEach((element) => {
-          setTimeout(() => {
-            document
-              .querySelector(`#${id} webview`)
-              .send("remove", element.selector);
-          }, 10);
-        });
     });
   };
+
+  const onURLChange = (asdasd) => {
+    console.log({ asdasd });
+    seturl(url);
+    console.log("Change url bro");
+    props.updateTab({
+      url: webView.webview(id).getURL(),
+      id,
+    });
+  };
+
+  // const replacingURL = () => {
+  //   const currUrl = webView.webview(id).getURL();
+  //   const { pathname: cPathName, hostname: cHostName } = new URL(currUrl);
+
+  //   services.forEach((e) => {
+  //     const blockedURLS = e.afp_custom_feilds.fetching_blocked_urls
+  //       ? e.afp_custom_feilds.fetching_blocked_urls
+  //       : [];
+  //     blockedURLS.forEach(({ urls: url }) => {
+  //       const { pathname: bPathName, hostname: bHostName } = new URL(url);
+
+  //       if (bHostName == cHostName && cPathName.includes(bPathName)) {
+  //         webView.webview(id).send("replace", "about:blank");
+  //       }
+  //     });
+  //     const tobeblockElements = e.afp_custom_feilds.fetching_blocked_elements;
+  //     Array.isArray(tobeblockElements) &&
+  //       tobeblockElements.forEach((element) => {
+  //         setTimeout(() => {
+  //           document
+  //             .querySelector(`#${id} webview`)
+  //             .send("remove", element.selector);
+  //         }, 10);
+  //       });
+  //   });
+  // };
 
   useEffect(() => {
     // Creates a webview
 
     create(id, { url: props.url });
 
-    util.updateTitle("New Tab", id);
+    props.updateTab({
+      title: "New Tab",
+      id,
+    });
     const startLoading = () => {
       seterror(false);
       document.getElementById("favicon" + id).setAttribute("src", EarthSpinner);
       setloading(true);
-      replacingURL();
+      // replacingURL();
     };
     const stopLoading = () => {
       seturl(webView.webview(id).getURL());
       setloading(false);
-      document
-        .getElementById("favicon" + id)
-        .setAttribute(
-          "src",
-          `https://www.google.com/s2/favicons?domain=${webView
-            .webview(id)
-            .getURL()}`
-        );
+      props.updateTab({
+        url: webView.webview(id).getURL(),
+        id,
+      });
     };
 
     const call = (er) => {
